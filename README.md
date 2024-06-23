@@ -1,7 +1,4 @@
-# WSC
 import React, { useState } from 'react';
-import { Calendar, User, Info, Activity } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('inicio');
@@ -10,59 +7,46 @@ const App = () => {
     switch(activeTab) {
       case 'inicio':
         return (
-          <Card className="mt-4">
-            <CardHeader>
-              <CardTitle>Bienvenido al Wilde Sporting Club</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Explora nuestras instalaciones y actividades. ¡Únete a nuestra comunidad deportiva!</p>
-            </CardContent>
-          </Card>
+          <div>
+            <h2>Bienvenido al Wilde Sporting Club</h2>
+            <p>Explora nuestras instalaciones y actividades. ¡Únete a nuestra comunidad deportiva!</p>
+          </div>
         );
       case 'actividades':
         return (
-          <Card className="mt-4">
-            <CardHeader>
-              <CardTitle>Actividades</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul>
-                <li>Fútbol</li>
-                <li>Básquet</li>
-                <li>Natación</li>
-                <li>Tenis</li>
-                <li>Gimnasio</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <div>
+            <h2>Nuestras Actividades</h2>
+            <ul>
+              <li>Básquet masculino</li>
+              <li>Básquet femenino</li>
+              <li>Natación</li>
+              <li>Taekwondo</li>
+              <li>Pelota paleta</li>
+              <li>Yoga</li>
+              <li>Colonia de invierno</li>
+              <li>Colonia de verano</li>
+            </ul>
+          </div>
         );
       case 'eventos':
         return (
-          <Card className="mt-4">
-            <CardHeader>
-              <CardTitle>Próximos Eventos</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul>
-                <li>Torneo de Fútbol - 15 de Julio</li>
-                <li>Clases de Natación - Todos los Sábados</li>
-                <li>Cena Anual del Club - 30 de Agosto</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <div>
+            <h2>Próximos Eventos</h2>
+            <ul>
+              <li>Torneo de Básquet - 15 de Julio</li>
+              <li>Clases de Natación - Todos los Sábados</li>
+              <li>Exhibición de Taekwondo - 30 de Agosto</li>
+            </ul>
+          </div>
         );
       case 'perfil':
         return (
-          <Card className="mt-4">
-            <CardHeader>
-              <CardTitle>Mi Perfil</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Nombre: [Nombre del Usuario]</p>
-              <p>Membresía: Activa</p>
-              <p>Actividades: Fútbol, Gimnasio</p>
-            </CardContent>
-          </Card>
+          <div>
+            <h2>Mi Perfil</h2>
+            <p>Nombre: [Nombre del Usuario]</p>
+            <p>Membresía: Activa</p>
+            <p>Actividades: Básquet masculino, Natación</p>
+          </div>
         );
       default:
         return null;
@@ -70,39 +54,19 @@ const App = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-white">
-      <div className="flex items-center justify-center mb-4">
-        {/* En una aplicación real, usaríamos la ruta real de la imagen del escudo */}
-        <img src="/api/placeholder/100/100" alt="Escudo Wilde Sporting Club" className="w-16 h-16 mr-4" />
-        <h1 className="text-2xl font-bold text-blue-600">Wilde Sporting Club</h1>
-      </div>
-      <div className="flex justify-around mb-4 bg-blue-600 rounded-lg p-2">
-        <button 
-          onClick={() => setActiveTab('inicio')}
-          className={`p-2 rounded ${activeTab === 'inicio' ? 'bg-white text-blue-600' : 'text-white'}`}
-        >
-          <Info size={24} />
-        </button>
-        <button 
-          onClick={() => setActiveTab('actividades')}
-          className={`p-2 rounded ${activeTab === 'actividades' ? 'bg-white text-blue-600' : 'text-white'}`}
-        >
-          <Activity size={24} />
-        </button>
-        <button 
-          onClick={() => setActiveTab('eventos')}
-          className={`p-2 rounded ${activeTab === 'eventos' ? 'bg-white text-blue-600' : 'text-white'}`}
-        >
-          <Calendar size={24} />
-        </button>
-        <button 
-          onClick={() => setActiveTab('perfil')}
-          className={`p-2 rounded ${activeTab === 'perfil' ? 'bg-white text-blue-600' : 'text-white'}`}
-        >
-          <User size={24} />
-        </button>
-      </div>
-      {renderContent()}
+    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
+      <header style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <h1 style={{ color: '#0000FF' }}>Wilde Sporting Club</h1>
+      </header>
+      <nav style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <button onClick={() => setActiveTab('inicio')} style={{ margin: '0 10px', padding: '10px 20px' }}>Inicio</button>
+        <button onClick={() => setActiveTab('actividades')} style={{ margin: '0 10px', padding: '10px 20px' }}>Actividades</button>
+        <button onClick={() => setActiveTab('eventos')} style={{ margin: '0 10px', padding: '10px 20px' }}>Eventos</button>
+        <button onClick={() => setActiveTab('perfil')} style={{ margin: '0 10px', padding: '10px 20px' }}>Perfil</button>
+      </nav>
+      <main style={{ backgroundColor: '#f0f0f0', padding: '20px', borderRadius: '5px' }}>
+        {renderContent()}
+      </main>
     </div>
   );
 };
